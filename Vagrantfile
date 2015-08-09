@@ -8,6 +8,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.box = "hashicorp/precise64"
 
+  config.vm.network "forwarded_port", guest: 8080, host: 8080
+
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", ENV["vm_memory"] || "2048"]
     vb.customize ["modifyvm", :id, "--ioapic", "on"]
