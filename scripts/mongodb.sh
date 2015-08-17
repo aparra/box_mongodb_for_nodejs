@@ -11,3 +11,7 @@ echo "mongodb-org-server hold" | sudo dpkg --set-selections
 echo "mongodb-org-shell hold" | sudo dpkg --set-selections
 echo "mongodb-org-mongos hold" | sudo dpkg --set-selections
 echo "mongodb-org-tools hold" | sudo dpkg --set-selections
+
+# enabled remote connection
+sudo sed -i 's/^bind_ip = 127.0.0.1$/# bind_ip = 127.0.0.1/' /etc/mongod.conf
+sudo service mongod restart
